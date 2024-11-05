@@ -1,3 +1,14 @@
+detect_missing_values <- function(data){
+  missing_counts <- numeric(ncol(data))
+  names(missing_counts) <- colnames(data)
+  
+  for(i in 1:ncol(data)){
+    missing_counts[i] <- sum(is.na(data[[i]]))
+  }
+  missing_counts <- missing_counts[missing_counts > 0]
+  return (missing_counts)
+}
+
 data <- data.frame(
   A = c(11,22,NA,44,55),
   B = c(NA,22,33,44,55),
